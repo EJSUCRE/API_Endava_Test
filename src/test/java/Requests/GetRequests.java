@@ -8,7 +8,7 @@ import static io.restassured.RestAssured.given;
 
 public class GetRequests extends SetProperties {
     private String token_path="authentication/token/new";
-    PostRequests postRequests = new PostRequests();
+    PostRequests postRequests;
     public GetRequests() {
         super();
     }
@@ -20,8 +20,8 @@ public class GetRequests extends SetProperties {
             .get(getUrl_host()+token_path)
             .then()
             .statusCode(200)
-            //.log()
-            //.body()
+            .log()
+            .body()
             .extract()
             .response();
         Assert.assertEquals("true",response.jsonPath().getString("success"));
