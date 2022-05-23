@@ -1,4 +1,4 @@
-package Requests;
+package requests;
 
 import io.restassured.response.Response;
 import org.testng.Assert;
@@ -20,8 +20,8 @@ public class GetRequests extends SetProperties {
             .get(getUrl_host()+token_path)
             .then()
             .statusCode(200)
-            .log()
-            .body()
+            //.log()
+            //.body()
             .extract()
             .response();
         Assert.assertEquals("true",response.jsonPath().getString("success"));
